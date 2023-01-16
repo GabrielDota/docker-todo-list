@@ -1,8 +1,6 @@
 FROM node:14-alpine
+WORKDIR /todo-app/back-end
 EXPOSE 3001
-WORKDIR /todo-app
-ADD node_modules.tar.gz ./back-end
-COPY /src ./back-end
-COPY package-lock.json ./back-end
-COPY package.json ./back-end
-ENTRYPOINT ["npm", "start"]
+ADD ./node_modules.tar.gz .
+COPY . .
+ENTRYPOINT [ "npm", "start" ]
